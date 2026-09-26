@@ -1,0 +1,39 @@
+{
+  "name": "zplprinter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lokales Web-Tool: PDF, Bilder und einfache Etiketten auf Zebra-Netzwerkdruckern (ZPL, Port 9100) drucken.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreasmo/labelprinter.git"
+  },
+  "homepage": "https://github.com/andreasmo/labelprinter",
+  "type": "module",
+  "scripts": {
+    "dev:web": "node scripts/copy-pdfjs.mjs && vite",
+    "dev:server": "node scripts/embed-assets.mjs --stub && bun --watch server/main.ts --no-browser",
+    "build:web": "node scripts/copy-pdfjs.mjs && vite build",
+    "build:embed": "node scripts/embed-assets.mjs",
+    "build:server": "bun build server/main.ts --target=node --outfile=dist/server.js",
+    "build": "npm run build:web && npm run build:embed && npm run build:server",
+    "build:exe": "npm run build && bun build server/main.ts --compile --target=bun-windows-x64 --outfile=dist/zplPrinter.exe",
+    "build:exe-linux": "npm run build && bun build server/main.ts --compile --target=bun-linux-x64 --outfile=dist/zplPrinter",
+    "start": "node dist/server.js",
+    "typecheck": "node scripts/embed-assets.mjs --stub && tsc --noEmit -p .",
+    "test": "bun test tests",
+    "test:ui": "node tests/ui-walkthrough.mjs"
+  },
+  "dependencies": {
+    "bwip-js": "^4.11.4",
+    "pdfjs-dist": "^6.3.289",
+    "preact": "^10.29.8"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.6",
+    "@types/node": "^26.6.2",
+    "bun": "^1.4.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  }
+}

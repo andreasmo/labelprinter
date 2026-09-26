@@ -1,0 +1,14 @@
+services:
+  zplprinter:
+    build: .
+    image: zplprinter:latest
+    restart: unless-stopped
+    ports:
+      - "8910:8910"
+    volumes:
+      - zpl-data:/data
+    environment:
+      # ZPL_READONLY: "1"   # Druckerliste nur per settings.json pflegbar
+      TZ: Europe/Berlin
+volumes:
+  zpl-data:

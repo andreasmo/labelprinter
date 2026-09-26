@@ -1,0 +1,6 @@
+node_modules/
+dist/
+web/public/pdfjs/
+server/assets.gen.ts
+*.tsbuildinfo
+test-results/
