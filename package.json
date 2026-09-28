@@ -1,6 +1,6 @@
 {
   "name": "zplprinter",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "description": "Lokales Web-Tool: PDF, Bilder und einfache Etiketten auf Zebra-Netzwerkdruckern (ZPL, Port 9100) drucken.",
   "license": "MIT",
